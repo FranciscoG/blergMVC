@@ -39,8 +39,10 @@
   });
    
   // Set error reporting
-  // TODO:  Set ENV 
-  Helpers::setReporting(true);
+  error_reporting(E_ALL);
+
+  // update php.ini settings from the new settings in our config file
+  Helpers::myPHPini($cfg['php']);
    
   // remove the magic quotes
   Helpers::removeMagicQuotes();

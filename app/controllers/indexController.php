@@ -1,5 +1,5 @@
 <?php
-class blogController extends Controller {
+class indexController extends Controller {
 
     
     protected function init(){

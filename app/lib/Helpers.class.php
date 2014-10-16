@@ -1,16 +1,61 @@
 <?php
 class Helpers {
+    static $_tabLevel = 2;
 
-    public static function setReporting($env){
-      if ($env) {
-          error_reporting(E_ALL);
-          ini_set('display_errors','On');
-      } else {
-          error_reporting(E_ALL);
-          ini_set('display_errors','Off');
-          ini_set('log_errors', 'On');
-          ini_set('error_log', ROOT.DS.'tmp'.DS.'logs'.DS.'error.log');
-      }
+    public static function myPHPini($cfg) {
+        foreach ($cfg as $ini => $setting) {
+            ini_set($ini, $setting);
+        }
+    }
+
+    /**
+     * Pretty print an array to the screen
+     * @param  array $arr 
+     * @param  bool $local   default=false; false = include "<pre>" tags for echoing to browser window
+     * @return string
+     */
+    public static function debug($arr, $local=false){
+        $_pre = (!$local) ? "<pre>" : "";
+        if (is_array($arr)) {
+            ob_start();
+            echo $_pre; print_r($arr); echo $_pre;
+            $content = ob_get_clean();
+            return $content;
+        }
+    }
+
+    /**
+     * logs to custom log file defined in config.php as DEBUG_LOG
+     * @param  var    $message string or an array
+     * @return void
+     */
+    public static function log($message) {
+        // Determine log file
+        if(!defined('DEBUG_LOG')) {
+            error_log('DEBUG_LOG is not defined. No log file defined!',0);
+            return;
+        }
+
+        if (is_array($message)) {
+            $message = self::debug($message, true);
+        }
+        
+        // add a new line
+        $message .= "\n";
+        
+        // Append to the log file
+        if ($fd = @fopen(DEBUG_LOG, "a")) {
+            $result = fwrite($fd, $message);
+            fclose($fd);
+
+            if($result <= 0) {
+                error_log('Unable to write to '. DEBUG_LOG .'!', 0);
+                return;
+            }
+        } else {
+            error_log('Unable to open log '. DEBUG_LOG .'!', 0);
+            return;
+        }
     }
 
     /**

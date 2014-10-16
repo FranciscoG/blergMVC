@@ -4,8 +4,10 @@
 ?>
 <h1>This is being loaded from controller/action, which is index</h1>
 
-<?php $this->insert('shared/part');  ?>
+<p>My name is <?=$items['name']?></p>
+<p>They call me the <?=$items['title']?></p>
+<p><?=$items['blerg']?></p>
 
-<?php $this->start('test');  ?>
-  <p>I am an inline section</p>
-<?php $this->end();  ?>
+<?php
+  echo Helpers::debug($items);
+?>

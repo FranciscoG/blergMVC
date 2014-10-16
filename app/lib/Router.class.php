@@ -138,6 +138,7 @@ class Router
         // of the calling function
         $c = new ReflectionClass($this->_controller);
         $m = $hasActionFunction ? $this->_action : 'defaultAction';
+        //$m = $this->_action;
         $f = $c->getMethod($m);
         $p = $f->getParameters();
         $params_new = array();
