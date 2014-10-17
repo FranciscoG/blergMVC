@@ -116,4 +116,16 @@ class Controller {
       // dispatch the result of the template class
         return $this->view;
     }
+
+    /**
+     * self explanatory
+     * @return void
+     */
+    public function forceSSL(){
+      if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == ""){
+        $redirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        header("Location: $redirect");
+      }
+      die();
+    }
 }

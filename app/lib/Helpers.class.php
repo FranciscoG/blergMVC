@@ -1,6 +1,5 @@
 <?php
 class Helpers {
-    static $_tabLevel = 2;
 
     public static function myPHPini($cfg) {
         foreach ($cfg as $ini => $setting) {
