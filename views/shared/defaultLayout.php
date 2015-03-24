@@ -10,9 +10,9 @@
 </head>
 
 <body>
-   
+  <?php $this->get('test'); ?> 
   <?php $this->renderBody(); ?>
-  <?php $this->get('test'); ?>
+  
 
 </body>
 </html>

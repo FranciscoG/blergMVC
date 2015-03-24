@@ -23,10 +23,10 @@ class Router
             $path = $this->_route;
 
             // the rules to route
-            $cai =  '/^([\w]+)\/([\w]+)\/([\d]+).*$/';  //  controller/action/id
-            $ci =   '/^([\w]+)\/([\d]+).*$/';           //  controller/id
-            $ca =   '/^([\w]+)\/([\w]+).*$/';           //  controller/action
-            $c =    '/^([\w]+).*$/';                    //  action
+            $cai =  '/^([\w-]+)\/([\w-]+)\/([\d]+).*$/';  //  controller/action/id
+            $ci =   '/^([\w-]+)\/([\d]+).*$/';           //  controller/id
+            $ca =   '/^([\w-]+)\/([\w-]+).*$/';           //  controller/action
+            $c =    '/^([\w-]+).*$/';                    //  action
             $i =    '/^([\d]+).*$/';                    //  id
 
             // initialize the matches
