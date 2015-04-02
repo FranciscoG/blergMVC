@@ -3,8 +3,7 @@ class indexController extends Controller {
 
     
     protected function init(){
-        //$this->db = new MySqlDataAdapter($this->cfg['db']['hostname'], $this->cfg['db']['username'], 
-        //$this->cfg['db']['password'], $this->cfg['db']['database']);
+        // do some DB connection or something
     }
     
   
