@@ -16,9 +16,10 @@ class Helpers {
      */
     public static function debug($arr, $local=false){
         $_pre = (!$local) ? "<pre>" : "";
+        $_closePre = (!$local) ? "</pre>" : "";
         if (is_array($arr)) {
             ob_start();
-            echo $_pre; print_r($arr); echo $_pre;
+            echo $_pre; print_r($arr); echo $_closePre;
             $content = ob_get_clean();
             return $content;
         }
